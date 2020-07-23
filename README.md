@@ -26,7 +26,7 @@ Code associated with the paper [**Pyramid: A Layered Model for Nested Named Enti
 
    ```json
    {
-   	"tokens": ["token0", "token1", "token2"],
+     "tokens": ["token0", "token1", "token2"],
      "entities": [
        {
          "entity_type": "PER", 
@@ -54,30 +54,30 @@ Code associated with the paper [**Pyramid: A Layered Model for Nested Named Enti
 
 3. Run the following cmd to start the training on ACE05.
 
-  ```bash
-  $ python train_ner.py \
-          --batch_size 32 \
-          --evaluate_interval 500 \
-          --dataset ACE05 \
-          --pretrained_wv ../wv/PATH_TO_WV_FILE  \
-          --max_epoches 500 \
-          --model_class PyramidNestNER  \
-          --model_write_ckpt ./PATH_TO_CKPT_TO_WRITE \
-          --crf None \
-          --optimizer sgd \
-          --lr 0.01 \
-          --tag_form iob2  \
-          --cased 0 \
-          --token_emb_dim 100 \
-          --char_emb_dim 30 \
-          --char_encoder lstm \
-          --lm_emb_dim 0 \
-          --lm_emb_path ../wv/PATH_TO_LM_EMB_PICKLE_OBJECT \
-          --tag_vocab_size 100 \
-          --vocab_size 20000 \
-          --dropout 0.4 \
-          --max_depth 16
-  ```
+   ```bash
+   $ python train_ner.py \
+           --batch_size 32 \
+           --evaluate_interval 500 \
+           --dataset ACE05 \
+           --pretrained_wv ../wv/PATH_TO_WV_FILE  \
+           --max_epoches 500 \
+           --model_class PyramidNestNER  \
+           --model_write_ckpt ./PATH_TO_CKPT_TO_WRITE \
+           --crf None \
+           --optimizer sgd \
+           --lr 0.01 \
+           --tag_form iob2  \
+           --cased 0 \
+           --token_emb_dim 100 \
+           --char_emb_dim 30 \
+           --char_encoder lstm \
+           --lm_emb_dim 0 \
+           --lm_emb_path ../wv/PATH_TO_LM_EMB_PICKLE_OBJECT \
+           --tag_vocab_size 100 \
+           --vocab_size 20000 \
+           --dropout 0.4 \
+           --max_depth 16
+   ```
 
 ## Arguments
 
@@ -97,7 +97,7 @@ Each json file consists of a list items, and each of item is as follows:
 
 ```json
 {
-	"tokens": ["token0", "token1", "token2"],
+  "tokens": ["token0", "token1", "token2"],
   "entities": [
     {
       "entity_type": "PER", 
@@ -179,9 +179,9 @@ which is a pickle file, representing a dictionary object, mapping a tuple of tok
 
 ```json
 {
-	(t0_0,t0_1,t0_2,...,t0_23): np.array([24, 1024]),
-	(t1_0,t1_1,t1_2,...,t1_16): np.array([17, 1024]),
-	...
+  (t0_0,t0_1,t0_2,...,t0_23): np.array([24, 1024]),
+  (t1_0,t1_1,t1_2,...,t1_16): np.array([17, 1024]),
+  ...
 }
 ```
 
