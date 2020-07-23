@@ -52,7 +52,7 @@ Code associated with the paper [**Pyramid: A Layered Model for Nested Named Enti
 
    (Optional) It is also recommended to use language model based contextualized embeddings, such as BERT. Check "./run/gen_XXX_emb.py" to generate them.
 
-3. Run the following cmd to start the training on ACE05.
+3. Run the following cmd to start the training, e.g., on ACE05.
 
    ```bash
    $ python train_ner.py \
@@ -81,15 +81,15 @@ Code associated with the paper [**Pyramid: A Layered Model for Nested Named Enti
 
 ## Arguments
 
-### batch_size
+### --batch_size
 
 The batch size to use.
 
-### evaluate_interval
+### --evaluate_interval
 
 The evaluation interval, which means evaluate the model for every {evaluate_interval} training steps.
 
-### dataset
+### --dataset
 
 The name of dataset to be used. The dataset should be unified in json and placed in "./datasets/unified/", ias"train.{dataset}.json", "valid.{dataset}.json", and "test.{dataset}.json" three files.
 
@@ -111,7 +111,7 @@ Each json file consists of a list items, and each of item is as follows:
 }
 ```
 
-### pretrained_wv
+### --pretrained_wv
 
 The pretrained word vectors file, such as GloVe.
 
@@ -121,57 +121,57 @@ Each line of this file represents a token or word. Here is an example with a vec
 word 0.002 1.9999 4.323 4.1231 -1.2323
 ```
 
-### max_epoches
+### --max_epoches
 
 max_epoches
 
-### model_class
+### --model_class
 
 model_class, should be **PyramidNestNER** or **BiPyramidNestNER**
 
-### model_write_ckpt
+### --model_write_ckpt
 
 Path of model_write_ckpt. None if you don't want to save checkpoints.
 
-### crf
+### --crf
 
 Crf class name. Usually disabled, i.e., None.
 
-### optimizer
+### --optimizer
 
 Optimizer to use. "adam" or "sgd".
 
-### lr
+### --lr
 
 Learning rate. E.g. 1e-2.
 
-### tag_form
+### --tag_form
 
 tag_form. Currently only support IOB2.
 
-### cased
+### --cased
 
-Whether cased for word embeddings. Note for char embs, it is always cased.
+Whether cased for word embeddings (0 or 1). Note for char embs, it is always cased.
 
-### token_emb_dim
+### --token_emb_dim
 
 Word embedding dimension. This should be in line with "pretrained_wv" file.
 
-### char_emb_dim
+### --char_emb_dim
 
 Character embedding dimension. 0 to disable it.
 
 30 works fine.
 
-### char_encoder
+### --char_encoder
 
 Use "lstm" or "cnn" char encoder. 
 
-### lm_emb_dim
+### --lm_emb_dim
 
 Language model based embedding dimension. 0 to disable it.
 
-### lm_emb_path
+### --lm_emb_path
 
 Language model embeddings. "lm_emb_path" is required if "lm_emb_dim" > 0.
 
@@ -187,19 +187,19 @@ which is a pickle file, representing a dictionary object, mapping a tuple of tok
 
 check "./run/gen_XXX_emb.py" to know how to generate the language model embeddings.
 
-### tag_vocab_size
+### --tag_vocab_size
 
 Maximum of tag vocab size. A value bigger than the possible number of IOB2 tags.
 
-### vocab_size
+### --vocab_size
 
 Maximum of token vocab size.
 
-### dropout
+### --dropout
 
 dropout rate
 
-### max_depth
+### --max_depth
 
 Max height for the Pyramid.
 
