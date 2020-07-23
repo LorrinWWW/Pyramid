@@ -20,7 +20,7 @@ Code associated with the paper [**Pyramid: A Layered Model for Nested Named Enti
 
    For ACE and GENIA, we follow the script from https://github.com/yahshibu/nested-ner-tacl2020-transformers to preprocess the corpora. For NNE, we use the proprocessing script from https://github.com/nickyringland/nested_named_entities.
 
-    The dataset are further unified in json and placed in "./datasets/unified/", as "train.{dataset}.json", "valid.{dataset}.json", and "test.{dataset}.json" three files.
+    Each dataset is further unified in json and placed in "./datasets/unified/" as "train.{dataset}.json", "valid.{dataset}.json", and "test.{dataset}.json" three files.
 
    Each json file consists of a list items, and each of item looks like:
 
@@ -42,7 +42,7 @@ Code associated with the paper [**Pyramid: A Layered Model for Nested Named Enti
 
 2. Generate embeddings
 
-   Here we prepare the pretrained word embeddings, such as GloVe. Available at https://nlp.stanford.edu/projects/glove/.
+   Then we prepare the pretrained word embeddings, such as GloVe. Available at https://nlp.stanford.edu/projects/glove/.
 
    Each line of this file represents a token or word. Here is an example with a vector of length 5:
 
@@ -52,7 +52,9 @@ Code associated with the paper [**Pyramid: A Layered Model for Nested Named Enti
 
    (Optional) It is also recommended to use language model based contextualized embeddings, such as BERT. Check "./run/gen_XXX_emb.py" to generate them.
 
-3. Run the following cmd to start the training, e.g., on ACE05.
+3. Start training
+   
+   Run the following cmd to start the training, e.g., on ACE05.
 
    ```bash
    $ python train_ner.py \
@@ -78,6 +80,9 @@ Code associated with the paper [**Pyramid: A Layered Model for Nested Named Enti
            --dropout 0.4 \
            --max_depth 16
    ```
+   
+   Log samples are placed in "./logs/"
+   
 
 ## Arguments
 
