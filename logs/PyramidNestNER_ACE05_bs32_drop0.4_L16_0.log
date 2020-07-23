@@ -1,0 +1,65 @@
+python train_ner.py
+        --batch_size 32
+        --evaluate_interval 500
+        --dataset ACE05
+        --pretrained_wv ../wv/glove.6B.100d.ace05.txt 
+        --max_epoches 500
+        --model_class PyramidNestNER 
+        --model_write_ckpt ./ckpts/PyramidNestNER_ACE05_bs32_drop0.4_L16_0
+        --crf None
+        --optimizer sgd
+        --lr 0.01
+        --tag_form iob2 
+        --cased 0
+        --token_emb_dim 100
+        --char_emb_dim 30
+        --char_encoder lstm
+        --lm_emb_dim 0
+        --lm_emb_path ../wv/lm.ace05.pkl
+        --tag_vocab_size 60
+        --vocab_size 20000
+        --dropout 0.4
+        --max_depth 15
+    
+
+PID: 18020
+
+/home/jue_wang/anaconda3/lib/python3.7/site-packages/torch/nn/modules/rnn.py:50: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.4 and num_layers=1
+  "num_layers={}".format(dropout, num_layers))
+
+0it [00:00, ?it/s]
+1858it [00:00, 18575.37it/s]
+4440it [00:00, 20281.02it/s]
+7016it [00:00, 21662.52it/s]
+9643it [00:00, 22865.23it/s]
+12215it [00:00, 23651.12it/s]
+13059it [00:00, 24505.33it/s]reading pretrained wv from ../wv/glove.6B.100d.ace05.txt
+reading data..
+load from ./datasets/unified/train.ACE05.json
+7285 valid sentences.
+warm indexing...
+load from ./datasets/unified/test.ACE05.json
+1058 valid sentences.
+warm indexing...
+load from ./datasets/unified/valid.ACE05.json
+968 valid sentences.
+warm indexing...
+=== start training ===
+
+g_step 100, step 100, avg_time 0.137, loss:5498.6466
+g_step 200, step 200, avg_time 0.137, loss:625.2633
+g_step 300, step 72, avg_time 0.135, loss:542.6790
+g_step 400, step 172, avg_time 0.132, loss:493.8103
+g_step 500, step 44, avg_time 0.134, loss:454.8551
+>> test prec:0.8330, rec:0.2684, f1:0.4060
+>> valid prec:0.7997, rec:0.2965, f1:0.4326
+new max f1 on valid!
+g_step 600, step 144, avg_time 0.209, loss:431.0059
+g_step 700, step 16, avg_time 0.136, loss:421.7529
+g_step 800, step 116, avg_time 0.132, loss:398.0822
+g_step 900, step 216, avg_time 0.131, loss:378.3482
+g_step 1000, step 88, avg_time 0.134, loss:347.7794
+learning rate was adjusted to 0.009523809523809523
+>> test prec:0.7485, rec:0.4038, f1:0.5246
+>> valid prec:0.7202, rec:0.4335, f1:0.5412
+new max f1 on valid!
