@@ -56,11 +56,7 @@ class PyramidNestNER(LSTMTagger):
         
     def set_loss_layer(self):
         
-        if self.config.crf:
-            self.crf_layer = eval(self.config.crf)(self.config)
-        else:
-            self.loss_layer = nn.CrossEntropyLoss(
-                reduction='none')
+        self.loss_layer = nn.CrossEntropyLoss(reduction='none')
         
     def check_attrs(self):
         # indexing
@@ -92,18 +88,10 @@ class PyramidNestNER(LSTMTagger):
         else:
             labels = [x.to(self.device) for x in self.pyramid_tag_indexing(rets['labels'])]
             
-            
-        if self.config.crf == 'CRF' or self.config.crf == 'DTCRF':
-            loss = 0
-            for logits, tags, mask in zip(logits_list, labels, mask_list):
-                loss += - self.crf_layer(logits, tags, mask=mask, reduction=self.config.loss_reduction)
-        elif not self.config.crf:
-            loss = 0
-            for i, (logits, tags, mask) in enumerate(zip(logits_list, labels, mask_list)):
-                loss_tensor = self.loss_layer(logits.permute(0, -1, 1), tags) # (B, T)
-                loss += (loss_tensor * mask.float()).sum()# * (1/(i+1.) + 0.5)
-        else:
-            raise Exception('not a compatible loss')
+        loss = 0
+        for i, (logits, tags, mask) in enumerate(zip(logits_list, labels, mask_list)):
+            loss_tensor = self.loss_layer(logits.permute(0, -1, 1), tags) # (B, T)
+            loss += (loss_tensor * mask.float()).sum()# * (1/(i+1.) + 0.5)
 
         rets['_labels'] = labels
         rets['loss'] = loss

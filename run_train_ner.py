@@ -43,7 +43,6 @@ def run_ner(
         --max_epoches {max_epoches}
         --model_class {model_class} 
         --model_write_ckpt {model_write_ckpt}
-        --crf None
         --optimizer {optim}
         --lr {lr}
         --tag_form iob2 

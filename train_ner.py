@@ -91,10 +91,6 @@ parser.add_argument('--hidden_dim',
                     default=200, type=int,
                     action='store',)
 
-parser.add_argument('--crf',
-                    default=True, type=none_or_str,
-                    action='store',)
-
 parser.add_argument('--loss_reduction',
                     default='sum',
                     action='store',)

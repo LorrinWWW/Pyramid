@@ -65,7 +65,6 @@ Code associated with the paper [**Pyramid: A Layered Model for Nested Named Enti
            --max_epoches 500 \
            --model_class PyramidNestNER  \
            --model_write_ckpt ./PATH_TO_CKPT_TO_WRITE \
-           --crf None \
            --optimizer sgd \
            --lr 0.01 \
            --tag_form iob2  \
@@ -137,10 +136,6 @@ model_class, should be **PyramidNestNER** or **BiPyramidNestNER**
 ### --model_write_ckpt
 
 Path of model_write_ckpt. None if you don't want to save checkpoints.
-
-### --crf
-
-Crf class name. Usually disabled, i.e., None.
 
 ### --optimizer
 
