@@ -7,7 +7,7 @@ Code associated with the paper [**Pyramid: A Layered Model for Nested Named Enti
 ```bibtex
 @inproceedings{jue2020pyramid,
   title={Pyramid: A Layered Model for Nested Named Entity Recognition},
-  author={Jue, WANG and Shou, Lidan and Chen, Ke and Chen, Gang},
+  author={Wang, Jue and Shou, Lidan and Chen, Ke and Chen, Gang},
   booktitle={Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics},
   pages={5918--5928},
   year={2020}
